@@ -34,7 +34,7 @@ class MyCamera
 	public:
 		void initialize(bool* firstMouse, double xpos, double ypos);
 		void updateMouse(double xpos, double ypos);
-		void bindView(GLuint shaderProg);
+		glm::mat4 bindView(GLuint shaderProg);
 		void bindProjection(GLuint shaderProg, glm::mat4 projection);
 
 	public:

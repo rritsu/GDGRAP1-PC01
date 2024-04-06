@@ -21,7 +21,7 @@ class OrthoCamera : public MyCamera
 
 	public:
 		glm::mat4 giveProjection();
-		void bindView(GLuint shaderProg);
+		glm::mat4 bindView(GLuint shaderProg);
 
 	public:
 		float getLeftMost();

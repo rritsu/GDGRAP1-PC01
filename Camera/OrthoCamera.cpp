@@ -7,11 +7,13 @@ OrthoCamera::OrthoCamera() {
 	this->topMost = 7.0f;
 }
 
-void OrthoCamera::bindView(GLuint shaderProg) {
+glm::mat4 OrthoCamera::bindView(GLuint shaderProg) {
 	glUseProgram(shaderProg);
 	glm::mat4 viewMatrix = glm::mat4(1.0f);
 	unsigned int viewLoc = glGetUniformLocation(shaderProg, "view");
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMatrix));
+
+	return viewMatrix;
 }
 
 glm::mat4 OrthoCamera::giveProjection() {

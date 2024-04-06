@@ -56,12 +56,14 @@ void MyCamera::updateMouse(double xpos, double ypos) {
 }
 
 
-void MyCamera::bindView(GLuint shaderProg) {
+glm::mat4 MyCamera::bindView(GLuint shaderProg) {
     //camera
     glUseProgram(shaderProg);
     glm::mat4 viewMatrix = glm::lookAt(this->cameraPos, this->cameraPos + this->cameraFront, this->cameraUp);
     unsigned int viewLoc = glGetUniformLocation(shaderProg, "view");
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(viewMatrix));
+
+    return viewMatrix;
 }
 
 void MyCamera::bindProjection(GLuint shaderProg, glm::mat4 projection) {
